@@ -1,1 +1,15 @@
 <h1>Dashboard</h1>
+
+<%= simple_form_for @shout do |f| %>
+  <%= f.input :body, placeholder: "Shout", as: :text %>
+  <%= f.button :submit %>
+<% end %>
+
+<% if @shouts.any? %>
+  <h3 class="mt-3">Shouts</h3>
+  <ul class="shouts list-group">
+    <% @shouts.each do |shout| %>
+      <li class="list-group-item"><%= shout.body %></li>
+    <% end %>
+  </ul>
+<% end %>
