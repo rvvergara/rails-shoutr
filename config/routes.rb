@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'dashboard/show'
+  constraints Clearance::Constraints::SignedIn.new do
+    root to: "dashboard#show"
+  end
+
   get 'home/show'
   root to: "home#show"
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
